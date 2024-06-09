@@ -1,0 +1,113 @@
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button{
+    font-size:16px;
+}
+a {
+    font-size: 16px;
+    padding: 20px;
+}
+
+a img {
+    margin: auto;
+    width: 40px;
+    height: auto;
+}
+.navbar-brand{
+    margin-left:3%;
+}
+
+.navbar-brand img {
+    margin-top: 2%;
+    margin-right: 3%;
+}
+
+form {
+    width: 100%;
+}
+
+.navbar-toggler{
+    margin-right:3%;
+    margin-left:3%;
+}
+
+div input {
+    width: 100%;
+    border-radius: 25px 0 0 25px;
+    border: none;
+}
+
+.d-flex button {
+    border-radius: 0 25px 25px 0;
+    margin-left: 0;
+    background-color: white;
+    border: none;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1.5px solid rgb(200, 200, 200);
+    border-radius: 25px;
+    width: 50%;
+    
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right:3%;
+}
+
+.buttons button {
+    color: black;
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer a {
+    padding: 0 5px;
+    text-decoration: underline;
+}
+
+.dropdown{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-right:30px;
+    padding-left:20px;
+
+}
+
+
+@media (max-width: 992px) {
+    .d-flex {
+        width: 60%;
+    }
+
+   
+}
+
+@media (max-width: 768px) {
+    .d-flex {
+        width: 60%;
+    }
+}
+

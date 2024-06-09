@@ -1,0 +1,155 @@
+<img src="../../../assets/imgs/icono.svg" alt="Logotipo de Comparte Cocina">
+<h3>¡Bienvenido/a!</h3>
+
+@if(registroExitoso){
+  <div class="alert alert-success" role="alert">
+    Inicio de sesión correcto
+  </div>
+}
+
+<div *ngFor="let error of errores">
+  <div class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+</div>
+
+<form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+  <div class="form-floating mb-3" id="correo">
+    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email" [class.is-invalid]="registroForm.controls['email'].invalid && registroForm.controls['email'].touched">
+    <label for="email">Correo electrónico</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['email'].invalid && registroForm.controls['email'].touched">
+        <div *ngIf="registroForm.controls['email'].errors?.['required']">Por favor, introduce tu correo electrónico.</div>
+        <div *ngIf="registroForm.controls['email'].errors?.['required']">Por favor, introduce un correo electrónico válido.</div>
+      </div>
+  </div>
+  <div id="nombreYApellidos">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="nombre" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="registroForm.controls['nombre'].invalid && registroForm.controls['nombre'].touched">
+      <label for="nombre">Nombre</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['nombre'].invalid && registroForm.controls['nombre'].touched">
+        Por favor, introduce tu nombre.
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" formControlName="apellidos" [class.is-invalid]="registroForm.controls['apellidos'].invalid && registroForm.controls['apellidos'].touched">
+      <label for="apellidos">Apellidos</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['apellidos'].invalid && registroForm.controls['apellidos'].touched">
+        Por favor, introduce tus apellidos.
+      </div>
+    </div>
+  </div>
+  <div id="provinciaYUsuario">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="nombreUsuario" placeholder="Nombre de usuario" formControlName="nombreUsuario" [class.is-invalid]="registroForm.controls['nombreUsuario'].invalid && registroForm.controls['nombreUsuario'].touched">
+      <label for="nombreUsuario">Nombre de usuario</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['nombreUsuario'].invalid && registroForm.controls['nombreUsuario'].touched">
+        Por favor, introduce un nombre de usuario.
+      </div>
+    </div>
+    <div class="form-floating">
+      <select class="form-select" id="provincia" formControlName="provincia" [class.is-invalid]="registroForm.controls['provincia'].invalid && registroForm.controls['provincia'].touched">
+        <option value="provincia" disabled>Provincia</option>
+        <option value="Álava">Álava</option>
+        <option value="Albacete">Albacete</option>
+        <option value="Alicante">Alicante</option>
+        <option value="Almería">Almería</option>
+        <option value="Asturias">Asturias</option>
+        <option value="Ávila">Ávila</option>
+        <option value="Badajoz">Badajoz</option>
+        <option value="Barcelona">Barcelona</option>
+        <option value="Burgos">Burgos</option>
+        <option value="Cáceres">Cáceres</option>
+        <option value="Cádiz">Cádiz</option>
+        <option value="Cantabria">Cantabria</option>
+        <option value="Castellón">Castellón</option>
+        <option value="Ciudad Real">Ciudad Real</option>
+        <option value="Córdoba">Córdoba</option>
+        <option value="Cuenca">Cuenca</option>
+        <option value="Girona">Girona</option>
+        <option value="Granada">Granada</option>
+        <option value="Guadalajara">Guadalajara</option>
+        <option value="Guipúzcoa">Guipúzcoa</option>
+        <option value="Huelva">Huelva</option>
+        <option value="Huesca">Huesca</option>
+        <option value="Islas Baleares">Islas Baleares</option>
+        <option value="Jaén">Jaén</option>
+        <option value="A Coruña">A Coruña</option>
+        <option value="La Rioja">La Rioja</option>
+        <option value="Las Palmas">Las Palmas</option>
+        <option value="León">León</option>
+        <option value="Lleida">Lleida</option>
+        <option value="Lugo">Lugo</option>
+        <option value="Madrid">Madrid</option>
+        <option value="Málaga">Málaga</option>
+        <option value="Murcia">Murcia</option>
+        <option value="Navarra">Navarra</option>
+        <option value="Ourense">Ourense</option>
+        <option value="Palencia">Palencia</option>
+        <option value="Pontevedra">Pontevedra</option>
+        <option value="Salamanca">Salamanca</option>
+        <option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option>
+        <option value="Segovia">Segovia</option>
+        <option value="Sevilla">Sevilla</option>
+        <option value="Soria">Soria</option>
+        <option value="Tarragona">Tarragona</option>
+        <option value="Teruel">Teruel</option>
+        <option value="Toledo">Toledo</option>
+        <option value="Valencia">Valencia</option>
+        <option value="Valladolid">Valladolid</option>
+        <option value="Vizcaya">Vizcaya</option>
+        <option value="Zamora">Zamora</option>
+        <option value="Zaragoza">Zaragoza</option>
+
+        
+
+      </select>
+      <label for="provincia">¿De donde eres?</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['provincia'].invalid && registroForm.controls['provincia'].touched">
+        Por favor, selecciona una provincia.
+      </div>
+    </div>
+  </div>
+
+  <div id="contrasenia">
+    <div class="form-floating">
+      <input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" formControlName="contrasenia" [class.is-invalid]="registroForm.controls['contrasenia'].invalid && registroForm.controls['contrasenia'].touched">
+      <label for="contrasenia">Contraseña</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['contrasenia'].invalid && registroForm.controls['contrasenia'].touched">
+        Por favor, introduce una contraseña de al menos seis caracteres.
+      </div>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="repetirContrasenia" placeholder="Repite la contraseña" formControlName="repetirContrasenia" [class.is-invalid]="registroForm.controls['repetirContrasenia'].invalid && registroForm.controls['repetirContrasenia'].touched">
+      <label for="repetirContrasenia">Repite la contraseña</label>
+      <div class="invalid-feedback" *ngIf="registroForm.controls['repetirContrasenia'].invalid && registroForm.controls['repetirContrasenia'].touched">
+        Por favor, repite la contraseña.
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <p-multiSelect 
+  [options]="categorias"
+  formControlName="categorias"
+  optionLabel="nombre" 
+  placeholder="Elige al menos tres categorías" id="select">
+</p-multiSelect>
+<div *ngIf="registroForm.controls['categorias'].errors?.['minSelected']">
+  Debes seleccionar al menos tres categorías.
+</div>
+
+  
+<div class="mb-3 form-check" id="check">
+  <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="aceptarTerminos" [class.is-invalid]="registroForm.controls['aceptarTerminos'].invalid && registroForm.controls['aceptarTerminos'].touched">
+  <label class="form-check-label" for="exampleCheck1">Aceptar términos</label>
+  <div class="invalid-feedback" *ngIf="registroForm.controls['aceptarTerminos'].invalid && registroForm.controls['aceptarTerminos'].touched">
+    Debes aceptar los términos para continuar.
+  </div>
+</div>
+<div id="button">
+  <button type="submit" class="btn btn-secondary">Registrarse</button>
+</div>
+</form>

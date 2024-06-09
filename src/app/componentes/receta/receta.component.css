@@ -1,0 +1,416 @@
+#nombre {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div h1 {
+    font-size: 36px;
+}
+
+#contenedor{
+    display: flex;
+    justify-content: space-between;
+    margin:10%;
+    margin-top: 3%;
+    margin-bottom: 2.5%;
+    
+}
+
+#categorias{
+    display: flex;
+    justify-content: left;
+    width:40%;
+}
+
+#categorias button{
+    margin-left:1%;
+    margin-right:1%;
+    border-radius:20px;
+    border:none;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:5px;
+    padding-top:5px;
+
+}
+
+#ingredientes{
+    margin:0px;
+    background-color: rgb(228, 228, 228);
+    padding:20px;
+}
+
+.ingrediente{
+    display:flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:2%;
+    margin-bottom:2%;
+    padding:10px;
+    padding-top:20px;
+    background-color:white;
+    border-radius:10px;
+}
+
+.ingrediente div{
+    display:flex;
+    justify-content: space-around;
+    width:20%;
+
+}
+
+#contenido {
+    margin-left:10%;
+    margin-right:10%;
+}
+
+#opciones button{
+    background-color: white;
+    border:none;
+}
+
+#opciones button svg{
+    color:black;
+    margin: auto; width: 25px; height: auto; 
+
+}
+
+
+#caracteristicas{
+    display:flex;
+    flex: row;
+    justify-content: space-between;
+    width:100%;
+    align-items:center;
+}
+
+#caracteristicas img{
+    width: 40%; 
+    height:auto;
+
+}
+
+
+
+#img{
+    width: 30%;
+}
+
+#img img{
+    width:100%;
+}
+
+#datos{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.datosElement{
+    display: flex;
+    align-items: center;
+    width:100%;
+    font-size:20px;
+    align-items: center;
+    padding:15px;
+
+}
+
+#element1{
+    width:70%;
+}
+
+.datosElement p{
+    width:100%;
+    font-size: 15px;
+    margin:0px;
+    text-align:left;
+    margin-left:10%;
+}
+
+h3{
+    margin-top:4%;
+    margin-bottom:4%;
+}
+
+h4{
+    margin-top:4%;
+    margin-bottom:2%;
+}
+
+#comentar{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:5%;
+    margin-bottom:5%;
+}
+
+#comentar textarea{
+    width:100%;
+    height:100px;
+    border-radius:10px;
+    border:1px solid black;
+    padding:15px;
+}
+
+#comentar button{
+    border:none;
+    border-radius:10px;
+    padding:10px;
+    margin-top:2%;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.paso div{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.paso div img{
+    width: 20%;
+}
+
+.paso div p{
+    width: 70%;
+    text-align: left;
+}
+
+#element p{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+#element{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:2%;
+    margin-bottom:2%;
+    padding:10px;
+    padding-top:20px;
+    background-color:white;
+    border-radius:10px;
+}
+
+#comentarioForm{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:5%;
+    margin-bottom:5%;
+}
+
+#comentarioForm select{
+    padding:15px;
+    width:40%;
+    border-radius:15px;
+    border:1px solid black;
+
+    
+}
+
+#comentarioForm input{
+    padding:15px;
+    width:40%;
+    border-radius:15px;
+    border:1px solid black;
+
+    
+}
+
+#ingredientes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 auto; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.ingrediente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; 
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0; 
+    border-radius: 4px; 
+}
+
+.ingrediente p {
+    margin: 0;
+}
+
+.descripcion {
+    flex: 2;
+    font-weight: bold; 
+}
+
+.cantidad-unidad {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.cantidad,
+.unidad {
+    flex: 1;
+    text-align: right;
+}
+
+#usuarioComentario{
+    display: flex;
+    align-items: center;
+    padding:15px;
+    padding-left:0px;
+    
+}
+
+#usuarioComentario p{
+    margin:0px;
+    padding:0px;
+    margin-left:8px;
+    
+}
+
+#comentarios {
+    margin-top: 20px;
+}
+
+.comentario {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.usuarioComentario {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.user-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.nombre-usuario {
+    font-weight: bold;
+    margin: 0;
+}
+
+.detalle-comentario {
+    padding-left: 40px; /* Space to align with user image */
+}
+
+.descripcion {
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.detalles {
+    display: flex;
+    gap: 15px;
+}
+
+.puntuacion, .complejidad {
+    font-size: 0.9em;
+    color: #555;
+}
+
+#comentarios{
+    padding-top:5px;
+    padding-bottom:40px;
+    
+}
+
+
+@media (max-width: 600px) {
+    #ingredientes {
+        padding: 0.5rem;
+    }
+    
+    .ingrediente {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cantidad-unidad {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .cantidad,
+    .unidad {
+        text-align: left;
+    }
+}
+
+.responder{
+    border:none;
+    display:flex;
+    align-items: center;
+    margin-top:2%;
+    margin-bottom:2%;
+
+    background-color: transparent;
+
+}
+
+.responder p{
+    margin:0px;
+    margin-right:8px;
+}
+
+.responder svg{
+    margin-top:2px;
+}
+
+.invalid-feedback {
+    display: none;
+}
+
+.ng-invalid.ng-dirty ~ .invalid-feedback,
+.ng-invalid.ng-touched ~ .invalid-feedback {
+    display: block;
+}
+
+.form-control.ng-invalid.ng-dirty,
+.form-control.ng-invalid.ng-touched {
+    border-color: #dc3545;
+}
+#usuario{
+    margin-top:3%;
+    display: flex;
+}
+
+#usuario h6{
+    margin-left:2%;
+}
+
+#formRespuesta button{
+    margin-top:3%;
+
+}
+
+#formRespuesta{
+    margin-bottom:10%;
+}

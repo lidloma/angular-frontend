@@ -1,0 +1,107 @@
+#siguiendo{
+    margin-top:2%;
+    padding:10px;
+    color:black;
+    border:none;
+    background-color: transparent;
+}
+
+#seguidores{
+    text-align: center;
+}
+
+#datos{
+    margin-top:2%;
+    margin-bottom:5%;
+    background-color:rgb(200, 200, 200);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:30px;
+}
+
+#datos2{
+    margin-bottom:5%;
+    background-color:rgb(200, 200, 200);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+button{
+    color:white;
+    padding:10px;
+    padding-left:15px;
+    padding-right:15px;
+
+}
+
+#menu{
+    display: flex;
+    justify-content: center;
+}
+
+#nombre{
+    text-align: center;
+}
+
+#nombre2{
+    text-align: center;
+    margin-left:2%;
+}
+
+#recetasCreadas{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:5%;
+    margin-right:20%;
+    margin-left:20%;
+
+
+}
+
+#seguir{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:1.2%;
+    margin-bottom:2%;
+    margin-right:20%;
+    margin-left:20%;
+}
+
+#recetasCreadas{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:50px;
+    margin-bottom:6%;
+
+}
+
+#usuarios{
+    text-align:center;
+}
+
+.noSeguir{
+    background-color: transparent;
+    color:#F31A1A;
+    border:none;
+    margin-left:5%;
+}
+
+.modal{
+    text-align:center;
+}
+
+#eliminar{
+    background-color: #F31A1A;
+}
+
+#botonBorrar{
+    background-color: transparent;
+    color:#F31A1A;
+    border:none;
+}

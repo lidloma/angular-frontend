@@ -1,0 +1,63 @@
+img{
+    margin: auto; width: 60px; height: auto; text-align: center;
+    display:block;
+}
+
+.form-check-label{
+    margin-top:2%;
+}
+
+.form-check-input{
+    margin-top:3.1%;
+}
+
+form{
+    margin:5%;
+}
+
+h3{
+    margin:5%;
+}
+
+
+.alert{
+    margin-left:5%;
+    margin-right:5%;
+}
+
+#nombreYApellidos{
+    display: flex;
+    justify-content: space-between;
+}
+
+#provinciaYUsuario{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#contrasenia{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:3%;
+}
+
+
+.form-floating{
+    width:47%;
+}
+
+#correo{
+    width: 100%;
+}
+
+#button{
+    margin-top:5%;
+    display:flex;
+    justify-content: center;
+}
+
+#check{
+    margin-bottom:5%;
+    margin-top:5%;
+}

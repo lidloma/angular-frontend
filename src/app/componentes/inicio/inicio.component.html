@@ -1,0 +1,280 @@
+<div *ngIf="cargandoUsuario">
+  <div class="loading">
+    <p>Cargando...</p>
+  </div>
+</div>
+
+@if(!cargandoUsuario && sesionIniciada && usuario){
+  <div id="pagina">
+    <div id="contenido">
+      <div id="temas">
+        @for(categoria of categorias; track categoria.id){
+            <div class="categoriaIni">
+                <img src="{{categoria.imagen}}" alt="">
+                <div class="overlay">{{categoria.nombre}}</div>
+            </div>
+        }
+    </div>
+      <div id="principal">
+        <div id="categorias">
+          <h3>Entre las <p style="color:#A5B49D;">&nbsp;categorías&nbsp;</p> que sigues</h3>
+          @for(receta of recetas; track receta.id){
+            <div class="card mb-3" style="max-width: 700px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  @if(receta.imagen){
+                    <img [src]="receta.imagen[0].imagen" class="img-fluid rounded-start" alt="...">
+                  }
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <div id="contenido2">
+                      <div id="usuario">
+                        <div>
+                          <img src="{{receta.usuario?.imagen}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                          <a  [routerLink]="['/perfil', receta.usuario?.nombreUsuario]" [queryParams]="{id:receta.usuario?.id}">{{ receta.usuario?.nombreUsuario }}</a>
+                        </div>
+                        <p class="card-text"><small class="text-body-secondary">{{receta.fecha}}</small></p>
+                      </div>
+                      <h4 class="card-title"><a href="#" [routerLink]="['/recetas', receta.nombre]" [queryParams]="{id:receta.id}">{{ receta.nombre }}</a></h4>
+                      <p  class="card-text" *ngIf="receta.descripcion.split(' ').length >= 15">{{receta.descripcion.split(' ').slice(0,15).join(' ')}}...</p>
+                      <p  class="card-text" *ngIf="receta.descripcion.split(' ').length < 15">{{receta.descripcion}}</p>
+                      <div id="pieCard">
+                        <div class="cat">
+                          @for(categoria of receta.categorias; track categoria){
+                            <button class="categoriaBtn">{{categoria.nombre}}</button>
+                          }
+                        </div>
+                        <div id="opciones">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#guardar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                            </svg>
+                          </button>
+                          <button class="valoracion">
+                            @if(receta.puntuacion==null){
+                              <p>N</p>
+                            }
+                            <p>{{receta.puntuacion}}</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                            </svg>
+                          </button>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+            <div id="guardar" class="modal" aria-labelledby="staticBackdropLabel">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">Agrega la receta a una lista</div>
+                  <div class="modal-body">
+                    <form [formGroup]="addRecetaForm" (ngSubmit)="agregarReceta(receta.id)">
+                      <div class="form-group">
+                          @if(recetaEnLista){
+                              <div class="alert alert-success" role="alert">
+                                  Receta añadida a la lista
+                                </div>
+                          }
+                        <label for="listaSelect">Selecciona una lista:</label>
+                        <select id="listaSelect" class="form-control" formControlName="lista_id">
+                          @if(listaRecetas && listaRecetas.length == 0){
+                              <option >No tienes ninguna lista creada</option>
+                          }
+                          <option *ngFor="let lista of listaRecetas" [value]="lista.id">{{ lista.nombre }}</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <div id="categoriasSeguir" class="modal" aria-labelledby="staticBackdropLabel">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">Categorías</div>
+              <div class="modal-body">
+                <form [formGroup]="categoriasForm" (ngSubmit)="onSubmit()">
+                  <div class="categorias-container" formArrayName="categorias">
+                    <div class="categoria-column" *ngFor="let categoria of listaCategorias; let i = index">
+                      <label>
+                        <input type="checkbox" [formControlName]="i">
+                        {{ categoria.nombre }}
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" (click)="onSubmit()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="usuarioQueSigues" class="elementosFeed">
+          <h3>Creaciones de los <p style="color:#926153;">&nbsp;usuarios&nbsp;</p> a los que sigues</h3>
+          @if(usuario.usuarios?.length==0 ){
+            <p>Parece que no sigues a nadie... Sigue a diferentes usuarios para que sus creaciones aparezcan aquí.</p>
+          }@else{
+          @for(receta of recetasUsuarioSeguidos; track receta.id){
+            <div class="card mb-3" style="max-width: 700px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  @if(receta.imagen){
+                    <img [src]="receta.imagen[0].imagen" class="img-fluid rounded-start" alt="...">
+                  }
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <div id="contenido2">
+                      <div id="usuario">
+                        <div>
+                          <img src="{{receta.usuario?.imagen}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                          <a  [routerLink]="['/perfil', receta.usuario?.nombreUsuario]" [queryParams]="{id:receta.usuario?.id}">{{ receta.usuario?.nombreUsuario }}</a>
+                        </div>
+                        <p class="card-text"><small class="text-body-secondary">{{receta.fecha}}</small></p>
+                      </div>
+                      <h4 class="card-title"><a href="#" [routerLink]="['/recetas', receta.nombre]" [queryParams]="{id:receta.id}">{{ receta.nombre }}</a></h4>
+                      <p  class="card-text" *ngIf="receta.descripcion.split(' ').length >= 15">{{receta.descripcion.split(' ').slice(0,15).join(' ')}}...</p>
+                      <p  class="card-text" *ngIf="receta.descripcion.split(' ').length < 15">{{receta.descripcion}}</p>
+                      <div id="pieCard">
+                        <div class="cat">
+                          @for(categoria of receta.categorias; track categoria){
+                            <button class="categoriaBtn">{{categoria.nombre}}</button>
+                          }
+                        </div>
+                        <div id="opciones">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#guardar2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                            </svg>
+                          </button>
+                          <button class="valoracion">
+                            <p>{{receta?.puntuacion}}</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                            </svg>
+                          </button>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+
+            
+  <div id="guardar2" class="modal" aria-labelledby="staticBackdropLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">Agrega la receta a una lista</div>
+        <div class="modal-body">
+          <form [formGroup]="addRecetaForm" (ngSubmit)="agregarReceta(receta.id)">
+            <div class="form-group">
+                @if(recetaEnLista){
+                    <div class="alert alert-success" role="alert">
+                        Receta añadida a la lista
+                      </div>
+                }
+              <label for="listaSelect">Selecciona una lista:</label>
+              <select id="listaSelect" class="form-control" formControlName="lista_id">
+                @if(listaRecetas && listaRecetas.length == 0){
+                    <option >No tienes ninguna lista creada</option>
+                }
+                <option *ngFor="let lista of listaRecetas" [value]="lista.id">{{ lista.nombre }}</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Añadir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+          }
+        }
+          
+        </div>
+      </div>
+    </div>
+  
+    <div id="arriba">
+      <div id="crearReceta">
+        <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/recetaform']" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear receta + </button>
+        <a href="">Ver tus recetas</a>
+      </div>
+      <div id="aside">
+        <div class="asideElement">
+          <h3 class="titulos">Categorías</h3>
+    
+          <ul class="list-group">
+            @for(categoria of usuario.categorias; track categoria.id){
+              <li class="list-group-item">{{categoria.nombre}}</li>
+            }
+          </ul>
+          <button id="btnCategorias"type="button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoriasSeguir">Seguir categorías</button>
+        </div>
+    
+        <div class="asideElement">
+          <h3 class="titulos">Gente que sigues</h3>
+          @if(usuario.usuarios?.length==0 ){
+            <p>¡Vaya! Parece que no sigues a nadie...</p>
+          }@else {
+            <ul class="list-group">
+              @for(usuario of usuario.usuarios; track usuario.id){
+                <li class="list-group-item">            
+                  <img src="{{usuario.imagen}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                  {{usuario.nombre}}</li>
+              }
+            </ul>
+          }
+          
+        </div>
+      </div>
+    </div>
+  </div>  
+  }@else if(!cargandoUsuario){
+    <main>
+      <section id="banner" style="background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)), url('../../../assets/imgs/bizcochos.jpeg');">
+        <h1>Bienvenido a Comparte cocina</h1>
+        <p>Encuentra y comparte las mejores recetas</p>
+        <a [routerLink]="['/buscador']" routerLinkActive="router-link-active">Explora Recetas</a>
+      </section>
+  
+      <section id="features">
+        <div class="feature">
+          <img src="../../../assets/imgs/receta.jpg" alt="Recetas Variadas" width="20" height="20" class="d-inline-block align-text-top">
+          <h2>Variedad de Recetas</h2>
+          
+          <p>Descubre recetas de todo tipo, desde platos principales hasta postres deliciosos.</p>
+        </div>
+        <div class="feature">
+          <img src="../../../assets/imgs/comunidad.jpg" alt="Recetas Favoritas" width="20" height="20" class="d-inline-block align-text-top">
+          <h2>Recetas Favoritas</h2>
+          <p>Guarda tus recetas favoritas y accede a ellas fácilmente cuando las necesites.</p>
+        </div>
+        <div class="feature">
+          <img src="../../../assets/imgs/bookmark.png" alt="Comunidad Activa" width="20" height="20" class="d-inline-block align-text-top">
+          <h2>Comunidad Activa</h2>
+          <p class="elemento">Únete a una comunidad de entusiastas culinarios y comparte tus propias recetas.</p>
+        </div>
+      </section>
+    </main>
+ 
+  }
+    
+
+

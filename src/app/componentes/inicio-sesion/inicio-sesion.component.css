@@ -1,0 +1,37 @@
+img{
+    margin: auto; width: 60px; height: auto; text-align: center;
+    display:block;
+}
+
+.form-check-label{
+    margin-top:2%;
+}
+
+.form-check-input{
+    margin-top:3.1%;
+}
+
+form{
+    margin:5%;
+}
+
+h3{
+    margin:5%;
+}
+
+
+.alert{
+    margin-left:5%;
+    margin-right:5%;
+}
+
+#iniciarSesion{
+    text-align: center;
+}
+
+#liveToastBtn{
+    margin-top: 10%;
+    padding:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+}

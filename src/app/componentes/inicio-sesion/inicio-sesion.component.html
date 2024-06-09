@@ -1,0 +1,28 @@
+<img src="../../../assets/imgs/icono.svg" alt="Logotipo de Comparte Cocina">
+<h3>¡Bienvenido de vuelta!</h3>
+@for(error of errores; track error){
+  <div class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+}
+
+@if(isLoggedIn){
+  <div class="alert alert-success" role="alert">
+    Inicio de sesión correcto
+  </div>
+}
+
+<form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingInput1" placeholder="name@example.com" formControlName="email" type="email">
+    <label for="floatingInput1">Correo electrónico</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPasswor1d" placeholder="Password" formControlName="contrasenia" type="password">
+    <label for="floatingPassword1">Contraseña</label>
+  </div>
+  <div id="iniciarSesion">  
+    <button type="submit" class="btn btn-secondary" id="liveToastBtn" (click)="iniciarSesion()">Iniciar sesión</button>
+  </div>
+</form>
+

@@ -1,0 +1,142 @@
+
+
+
+#siguiendo{
+    margin-top:2%;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:30px;
+}
+
+#datos{
+    margin-top:2%;
+    margin-bottom:5%;
+    background-color:rgb(200, 200, 200);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:30px;
+}
+
+#datos2{
+    margin-bottom:5%;
+    background-color:rgb(200, 200, 200);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+
+#menu{
+    display: flex;
+    justify-content: center;
+}
+
+#datosUsuario{
+    text-align: center;
+}
+
+#nombre2{
+    text-align: center;
+    margin-left:2%;
+}
+
+#recetasCreadas{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:5%;
+    margin-right:20%;
+    margin-left:20%;
+
+
+}
+
+#seguir{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:1.2%;
+    margin-bottom:2%;
+    margin-right:20%;
+    margin-left:20%;
+}
+
+.card{
+    display:block;
+    margin:auto;
+}
+
+
+
+.accordion-header{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    border-radius:15px;
+
+}
+
+.accordion-item{
+    width:70%;
+    margin:20px;
+
+
+}
+
+.accordion-button{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border:none;
+    border-radius:10px;
+    margin:0px;
+    padding:0px;
+    width:20px;
+
+}
+
+#accordionElements{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:2%;
+    margin-bottom:2%;
+    width:55%;
+    justify-self: flex-end;
+   
+
+}
+
+#accordionElements button{
+    border:none;
+    background-color: transparent;
+    
+}
+
+.accordion{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:50px;
+     
+}
+
+#anadirLista{
+    width:9.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:5%;
+}
+
+#anadirLista p{
+    margin:0px;
+    padding:0px;
+}
+

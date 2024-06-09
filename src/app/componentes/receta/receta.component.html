@@ -1,0 +1,254 @@
+<div *ngIf="receta.imagen" id="nombre" [style.background-image]="'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(' + receta.imagen[0].imagen + ')'">
+    <h1>{{ receta.nombre }}</h1>
+</div>
+  
+    
+<div id="contenedor">
+    <div id="categorias">
+        @for (categoria of receta.categorias; track categoria){
+        <button class="btn btn-secondary">{{ categoria.nombre }}</button>
+        }
+    </div>
+    <div id="opciones">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+            </svg>
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#guardar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" [ngClass]="{'bi-bookmark-fill': recetaEnLista, 'bi-bookmark': !recetaEnLista}" viewBox="0 0 16 16">
+                <path *ngIf="recetaEnLista" d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                <path *ngIf="!recetaEnLista" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+            </svg>
+        </button>  
+        <button type="button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#denunciar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
+                <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"/>
+            </svg>
+            
+        </button>     
+    </div>
+</div>
+<div id="contenido">
+    
+    <h3>Por <a [routerLink]="['/perfil', receta.usuario?.nombreUsuario]" [queryParams]="{id:receta.usuario?.id}">{{ receta.usuario?.nombreUsuario }}</a>, {{ receta.fecha }}</h3>
+    <p>{{ receta.descripcion }}</p>
+
+    <h4>Características</h4>
+    <div id="caracteristicas">
+
+        <div id="datos">
+            <div id="element1">
+                <div class="datosElement">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                    </svg>
+                    <p>Tiempo de cocinado</p>
+                </div>
+                <div class="datosElement">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+                    </svg>
+                    <p>Complejidad</p>
+                </div>
+                <div class="datosElement">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                    </svg>
+                    <p>Número de personas</p>
+                </div>
+            </div>
+            <div class="element">
+                <p>{{ receta.tiempo }}</p>
+                <p>{{ receta.complejidad }}</p>
+                <p>{{ receta.numeroPersonas }}</p>
+            </div>
+        </div>
+        <div id="img">
+            @if(receta.imagen){
+            <img src="{{receta.imagen[1].imagen}}" alt="">
+            }
+        </div>
+    </div>
+
+    <h4>Ingredientes</h4>
+    <div id="ingredientes">
+        @for (ingrediente of receta.ingrediente; track ingrediente){
+            <div class="ingrediente">
+                <p class="descripcion">{{ ingrediente.descripcion }}</p>
+                <div class="cantidad-unidad">
+                    <p class="cantidad">{{ ingrediente.cantidad }}</p>
+                    <p class="unidad">{{ ingrediente.unidad }}</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h4>Proceso</h4>
+    <div class="paso">
+        @for (paso of receta.paso; track paso){
+        <div>
+            <p>{{ paso.numero }}.- {{ paso.descripcion }}</p>
+            <img src="{{paso.imagen}}" alt="">
+        </div>
+        }
+    </div>
+
+    @if(sesion){
+        <h4>¿Has probado la receta? Comparte tu experiencia: </h4>
+        @if(comentarioEnviado){
+            <div class="alert alert-success" role="alert">
+                Comentario agregado
+            </div>
+        }
+    <form id="comentar" [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
+        <textarea name="comentario" id="comentario" cols="30" rows="10" placeholder="Escribe tu comentario aquí" formControlName="descripcion"></textarea>
+        <div class="invalid-feedback" *ngIf="comentarioForm.get('descripcion')?.invalid && (comentarioForm.get('descripcion')?.dirty || comentarioForm.get('descripcion')?.touched)">
+            El comentario es requerido.
+        </div>
+        <div id="comentarioForm">
+            <input type="number" name="puntuacion" id="puntuacion" min="0" max="5" placeholder="Puntuación (0-5)" formControlName="puntuacion">
+            <div class="invalid-feedback" *ngIf="comentarioForm.get('puntuacion')?.invalid && (comentarioForm.get('puntuacion')?.dirty || comentarioForm.get('puntuacion')?.touched)">
+                La puntuación debe ser entre 0 y 5.
+            </div>
+            <select class="form-select" aria-label="Default select example" formControlName="complejidad">
+                <option value="" disabled selected>Complejidad</option>
+                <option value="Sencillo">Sencillo</option>
+                <option value="Medio">Medio</option>
+                <option value="Difícil">Difícil</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="comentarioForm.get('complejidad')?.invalid && (comentarioForm.get('complejidad')?.dirty || comentarioForm.get('complejidad')?.touched)">
+                La complejidad es requerida.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-secondary">Comentar</button>
+    </form>
+
+    
+    }
+    
+    
+    <h4>{{ receta.comentarios?.length }} comentarios</h4>
+<div id="comentarios">
+    @for (comentario of receta.comentarios; track comentario) {
+        @if(comentario.puntuacion !== null){
+          
+        <div class="comentario">
+            <div class="usuarioComentario">
+                <img src="{{ comentario.usuario?.imagen }}" alt="Imagen de usuario" class="rounded-circle user-img">
+                <p class="nombre-usuario">{{ comentario.usuario?.nombreUsuario }}</p>
+            </div>
+            <div class="detalle-comentario">
+                <p class="descripcion">{{ comentario.descripcion }}</p>
+                <div class="detalles">
+                    <span class="puntuacion" *ngIf="comentario.puntuacion !== null">Puntuación: {{ comentario.puntuacion }}</span>
+                    <span class="complejidad" *ngIf="comentario.complejidad !== null">Complejidad: {{ comentario.complejidad }}</span>
+                </div>
+                <button (click)="toggleFormularioRespuesta(comentario.id)" class="responder">
+                    <p>Responder</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+                    </svg>
+                </button>
+                
+
+                <div *ngIf="comentario.respuestas && comentario.respuestas.length > 0">
+                    <h5>Respuestas:</h5>
+                    <div *ngFor="let respuesta of comentario.respuestas">
+                        <div id="usuario">
+                            <img src="{{respuesta.usuario?.imagen}}" alt="Descripción de la foto" class="rounded-circle" width="20" height="20">
+                            <h6>{{respuesta.usuario?.nombreUsuario}}</h6>
+                        </div>
+                        <p>{{ respuesta.descripcion }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        }
+    }@empty {
+        <hr>
+
+        <p id="comentarios">No hay comentarios, sé el primero en dejar su opinión.</p>
+    }
+</div>
+
+<div *ngIf="mostrarFormularioRespuesta">
+    <h4>Responde al usuario seleccionado</h4>
+    @if(respuestaEnviada){
+        <div class="alert alert-success" role="alert">
+            Respuesta agregada
+        </div>
+    }
+    <form id="formRespuesta"[formGroup]="respuestaForm" (ngSubmit)="onSubmitRespuesta()">
+        <textarea class="form-control" formControlName="descripcion" placeholder="Escribe tu respuesta aquí"></textarea>
+        <button type="submit" class="btn btn-secondary">Enviar</button>
+    </form>
+</div>
+
+
+
+
+
+<!-- Modal de crear nueva lista -->
+<div id="guardar" class="modal" aria-labelledby="staticBackdropLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">Agrega la receta a una lista</div>
+        <div class="modal-body">
+          <form [formGroup]="addRecetaForm" (ngSubmit)="agregarReceta()">
+            <div class="form-group">
+                @if(recetaEnLista){
+                    <div class="alert alert-success" role="alert">
+                        Receta añadida a la lista
+                      </div>
+                }
+              <label for="listaSelect">Selecciona una lista:</label>
+              <select id="listaSelect" class="form-control" formControlName="lista_id">
+                @if(listaRecetas && listaRecetas.length == 0){
+                    <option >No tienes ninguna lista creada</option>
+                }
+                <option *ngFor="let lista of listaRecetas" [value]="lista.id">{{ lista.nombre }}</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Añadir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="modal fade" id="denunciar" tabindex="-1" aria-labelledby="denunciarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="denunciarModalLabel">Denunciar Receta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="denunciaForm" (ngSubmit)="onSubmitDenuncia()">
+            <div class="mb-3">
+              <label for="motivo" class="form-label">Motivo</label>
+              <input id="motivo" formControlName="motivo" class="form-control" />
+              <div *ngIf="denunciaForm.get('motivo')?.invalid && (denunciaForm.get('motivo')?.dirty || denunciaForm.get('motivo')?.touched)" class="text-danger">
+                <div *ngIf="denunciaForm.get('motivo')?.errors?.['required']">
+                  El motivo es requerido.
+                </div>
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary" [disabled]="denunciaForm.invalid">Enviar Denuncia</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

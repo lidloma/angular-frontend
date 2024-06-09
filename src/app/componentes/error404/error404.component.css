@@ -1,0 +1,25 @@
+div{
+    width:100%;
+    height:auto;
+    display:block;
+    text-align:center;
+
+}
+
+p{
+    text-align:left;
+    font-size:20px;
+}
+
+.texto{
+    padding-bottom:60px;
+}
+
+#contenido{
+    display: flex;
+    align-items:center;
+    margin-top:5%;
+    margin-bottom:5%;
+
+    
+}
