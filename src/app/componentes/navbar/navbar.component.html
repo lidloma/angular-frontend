@@ -108,13 +108,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="recargar()"></button>
             </div>
             <div class="modal-body">
                 <app-inicio-sesion></app-inicio-sesion>
             </div>
             <div class="modal-footer">
-                <p>¿No estás registrado?<a>Regístrate</a></p>
+                <p>¿No estás registrado? <button class="btn btn-link p-0" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registroModal" >Regístrate</button></p>
+
             </div>
         </div>
     </div>
@@ -126,13 +127,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Registrarse</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="recargar()"></button>
             </div>
             <div class="modal-body">
                 <app-registro></app-registro>
             </div>
             <div class="modal-footer">
-                <p>¿Estás ya registrado?<a>Inicia sesión</a></p>
+                <p>¿Estás ya registrado? <button class="btn btn-link p-0" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Inicia sesión</button></p>
             </div>
         </div>
     </div>
