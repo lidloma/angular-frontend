@@ -111,19 +111,10 @@ nav{
 
 }
 
-/* 
-figcaption {
-    display:none; 
-    transition: all .5s;
-}
-
-figure:hover > figcaption {
-    display:block;
-    transition: all .5s;
-}
- */
 .card-img-top{
-    height:200px;
+    display: block;  
+    object-fit: cover;
+    height:170px;
   }
 
   #center{
@@ -131,3 +122,5 @@ figure:hover > figcaption {
     display:block;
     margin:auto;
   }
+
+  

@@ -51,16 +51,6 @@ button{
     margin-left:2%;
 }
 
-#recetasCreadas{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top:5%;
-    margin-right:20%;
-    margin-left:20%;
-
-
-}
 
 #seguir{
     display: flex;
@@ -103,5 +93,66 @@ button{
 #botonBorrar{
     background-color: transparent;
     color:#F31A1A;
+    border:none;
+}
+
+.modal-header {
+  background-color: #926153;
+  color: white;
+}
+.modal-footer {
+  justify-content: flex-end;
+}
+.modal-body {
+  padding: 2rem;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+.form-label {
+  color: #926153;
+}
+.btn-primary {
+  background-color: #926153;
+}
+.btn-primary:hover {
+  background-color: #7a4d45;
+}
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: 0.5rem;
+  }
+}
+
+#recetasCreadas{
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+
+
+.card img{
+  display: block;  
+  object-fit: cover;
+  height:170px;
+}
+
+.card{
+  margin:1%;
+  margin-top:2%;
+  border:none;
+  background-color: #ECEDEB;
+}
+
+h4{color:black;}
+.borrar{
+    background-color: transparent;
     border:none;
 }

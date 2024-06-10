@@ -102,12 +102,11 @@
 
 #accordionElements{
     display:flex;
-    justify-content: center;
     align-items: center;
     margin-top:2%;
     margin-bottom:2%;
     width:55%;
-    justify-self: flex-end;
+    justify-content: flex-end;
    
 
 }
@@ -127,6 +126,17 @@
      
 }
 
+.accordion-body{
+    display:flex;
+    flex-direction: space-around;
+    flex-wrap:wrap;
+    width:100%;
+
+}
+
+
+
+
 #anadirLista{
     width:9.5%;
     display: flex;
@@ -138,5 +148,61 @@
 #anadirLista p{
     margin:0px;
     padding:0px;
+}
+
+
+.modal-header {
+    background-color: #926153;
+    color: white;
+  }
+  .modal-footer {
+    justify-content: flex-end;
+  }
+  .modal-body {
+    padding: 2rem;
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+  }
+ 
+  .btn-primary {
+    background-color: #926153;
+  }
+  .btn-primary:hover {
+    background-color: #7a4d45;
+  }
+  @media (max-width: 576px) {
+    .modal-dialog {
+      max-width: 100%;
+      margin: 0.5rem;
+    }
+  }
+
+  .card img{
+    display: block;  
+    object-fit: cover;
+    height:170px;
+}
+
+.card{
+    margin-top:5%;
+    border:none;
+    background-color: #ECEDEB;
+    height:350px;
+}
+
+h4 a{color:black;}
+.borrar{
+    background-color: transparent;
+    border:none;
+}
+
+.borrar svg{
+    color:#F31A1A;
 }
 

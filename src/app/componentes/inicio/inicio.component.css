@@ -5,12 +5,15 @@
     position: relative;
     display: inline-block;
     margin: 10px;
+    overflow: hidden; /* Ensure the overlay stays within the bounds */
 }
+
 .categoriaIni img {
     width: 100%;
     height: auto;
-    transition: opacity 0.5s ease;
+    display: block; /* Ensure the image is a block element */
 }
+
 .categoriaIni .overlay {
     position: absolute;
     top: 0;
@@ -25,12 +28,11 @@
     opacity: 0;
     transition: opacity 0.5s ease;
 }
-.categoriaIni:hover img {
-    opacity: 0.5;
-}
+
 .categoriaIni:hover .overlay {
     opacity: 1;
 }
+
 
 
 #pagina{
@@ -93,7 +95,16 @@
     background-color: transparent;
     border:none;
     text-decoration: underline;
+    color:black;
     
+}
+
+#btnCategorias:active {
+    color: black;
+}
+
+button.btn.btn-primary:active #bookmark-icon {
+    color: black;
 }
 
 div.asideElement{
@@ -342,12 +353,14 @@ h3{
     display: flex;
     justify-content: space-around;
     padding: 50px 0;
+    flex-wrap: wrap;
   }
   
   .feature {
     text-align: center;
     margin-right:2%;
     margin-left:2%;
+    width:20%;
   }
   
   .feature img {

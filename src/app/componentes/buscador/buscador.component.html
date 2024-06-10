@@ -38,11 +38,8 @@
       <div class="card-body">
           <h4 class="card-title"><a href="#" [routerLink]="['/recetas', receta.nombre]" [queryParams]="{id:receta.id}">{{ receta.nombre }}</a></h4>
           <h6 class="card-subtitle">{{ receta.fecha }}</h6>
-            @if (receta.descripcion.split(' ').length >= 30){
-              <p>{{ receta.descripcion.split(' ').slice(0,30).join(' ') }}...</p>
-            }@else if (receta.descripcion.split(' ').length < 50){
-              {{receta.descripcion}}
-            }
+          <p  class="card-text" *ngIf="receta.descripcion.split(' ').length >= 15">{{receta.descripcion.split(' ').slice(0,15).join(' ')}}...</p>
+          <p  class="card-text" *ngIf="receta.descripcion.split(' ').length < 15">{{receta.descripcion}}</p>
             <div id="categorias">
               @for (categoria of receta.categorias; track categoria){
               <button class="categoria">{{ categoria }}</button>

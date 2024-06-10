@@ -129,3 +129,14 @@ p{
   margin:0px;
   padding:0px;
 }
+
+.card{
+  margin-top:3%;
+  background-color:#ECEDEB;
+  border:none;
+}
+
+
+button.btn.btn-primary:active #bookmark-icon {
+  color: black;
+}

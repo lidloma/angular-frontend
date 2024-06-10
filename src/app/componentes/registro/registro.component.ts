@@ -151,6 +151,8 @@ export class RegistroComponent {
       this.errores = [];
       this.errores.push("Por favor, rellene todos los campos");
       this.error = true;
+      this.registroForm.markAllAsTouched();
+
     }
   }
 

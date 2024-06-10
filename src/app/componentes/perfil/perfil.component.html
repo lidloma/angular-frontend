@@ -38,7 +38,8 @@
       }
       <div class="card-body">
         <h5 class="card-title">{{receta.nombre}}</h5>
-        <p class="card-text">{{receta.descripcion}}</p>
+        <p  class="card-text" *ngIf="receta.descripcion.split(' ').length >= 15">{{receta.descripcion.split(' ').slice(0,15).join(' ')}}...</p>
+        <p  class="card-text" *ngIf="receta.descripcion.split(' ').length < 15">{{receta.descripcion}}</p>
         <a href="#" class="btn btn-primary">Editar</a>
         <button id="botonBorrar" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#borrar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -165,8 +166,8 @@
             </div>
         
             <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" formControlName="nombre" class="form-control">
+              <label for="nombres">Nombre</label>
+              <input type="text" id="nombres" formControlName="nombre" class="form-control">
             </div>
         
             <div class="form-group">
@@ -184,14 +185,14 @@
               <input type="text" id="provincia" formControlName="provincia" class="form-control">
             </div>
 
-            <div>
-              <label for="imagen">Imagen:</label>
+            <div class="form-group">
+              <label for="imagen">Imagen</label>
               <input id="imagen" type="file" (change)="seleccionarImagen($event)" class="form-control">
             </div>
         
             <div class="form-group">
               <label for="contrasenia">Contraseña</label>
-              <input type="password" id="contrasenia" formControlName="contrasenia" class="form-control">
+              <input type="password" id="contrasenia" formControlName="contrasenia" class="form-control" placeholder="Nueva contraseña (si no la quieres cambiar déjalo vacío)">
             </div>
         
             <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Actualizar</button>
