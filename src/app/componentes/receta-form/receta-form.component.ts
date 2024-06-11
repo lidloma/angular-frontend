@@ -73,17 +73,13 @@ export class RecetaFormComponent implements OnInit {
     return arrayImagen;
   }
 
-  obtenerUsuario(): number {
-    console.log(parseInt(this._autentificacionService.getId()));
-    
+  obtenerUsuario(): number {    
     return parseInt(this._autentificacionService.getId());
   }
 
   obtenerIdCategorias(): number[] {
     return this.crearReceta.value.categorias.map((categoria: CategoriaModel) => categoria.id);
   }
-
-  
 
   subirReceta(): void {
     const recetaData: RecetaModel = {
@@ -101,8 +97,6 @@ export class RecetaFormComponent implements OnInit {
       numeroPersonas: this.crearReceta.value.numeroPersonas,
       complejidad: this.crearReceta.value.complejidad
     };
-
-    console.log('Receta a subir:', recetaData);
 
     this._recetasService.crearReceta(recetaData).subscribe(
       response => {

@@ -1,28 +1,28 @@
-<img src="../../../assets/imgs/icono.svg" alt="Logotipo de Comparte Cocina">
+<img src="../../../assets/imgs/icono.svg" alt="Logotipo de Comparte Cocina" class="logo">
 <h3>¡Bienvenido de vuelta!</h3>
-@for(error of errores; track error){
-  <div class="alert alert-danger" role="alert">
-    {{ error }}
-  </div>
-}
 
-@if(isLoggedIn){
-  <div class="alert alert-success" role="alert">
-    Inicio de sesión correcto
-  </div>
-}
+<div *ngIf="isLoggedIn" class="alert alert-success" role="alert">
+  Inicio de sesión correcto
+</div>
 
 <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
   <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingInput1" placeholder="name@example.com" formControlName="email" type="email">
+    <input type="email" class="form-control" id="floatingInput1" placeholder="name@example.com" formControlName="email">
     <label for="floatingInput1">Correo electrónico</label>
+    <div *ngIf="loginForm.controls['email'].hasError('incorrect')" class="text-danger">
+      {{ errores[0] }}
+    </div>
   </div>
-  <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPasswor1d" placeholder="Password" formControlName="contrasenia" type="password">
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="floatingPassword1" placeholder="Password" formControlName="contrasenia">
     <label for="floatingPassword1">Contraseña</label>
+    <div *ngIf="loginForm.controls['contrasenia'].hasError('incorrect')" class="text-danger">
+      {{ errores[1] }}
+    </div>
   </div>
   <div id="iniciarSesion">  
-    <button type="submit" class="btn btn-secondary" id="liveToastBtn" (click)="iniciarSesion()">Iniciar sesión</button>
+    <button type="submit" class="btn btn-secondary" id="liveToastBtn">Iniciar sesión</button>
   </div>
 </form>
 
+<!-- <p-toast></p-toast> -->

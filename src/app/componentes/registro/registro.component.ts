@@ -170,7 +170,7 @@ export class RegistroComponent {
       (data: CategoriaModel[]) => {
         this.categorias = data;
       },
-      (error) => {
+      (error:any) => {
         console.error('Error al obtener la lista de categorías:', error);
       }
     );

@@ -15,6 +15,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let denuncia of denuncias">
+          @if(denuncia==[]){
+            <p>No hay denuncias que mostrar</p>
+          }
           <td>{{ denuncia.id }}</td>
           <td>{{ denuncia.motivo }}</td>
           <td>{{ denuncia.fecha | date }}</td>

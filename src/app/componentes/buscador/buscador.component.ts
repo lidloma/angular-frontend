@@ -28,6 +28,7 @@ export class BuscadorComponent implements OnInit {
   addRecetaForm: FormGroup;
   listaRecetas: RecetaModel[] = []
   recetaEnLista = false;
+  sesionIniciada = false;
 
   
 
@@ -46,6 +47,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.verificarSesion();
     this.route.queryParams.subscribe(params => {
       if (params['q']) {
         this.consulta = params['q'];
@@ -56,8 +58,24 @@ export class BuscadorComponent implements OnInit {
         
       }
     });
-    this.obtenerListas();
-    this.getListaCategorias();
+    if(this.sesionIniciada){
+      this.obtenerListas();
+      this.getListaCategorias();
+    }
+    
+  }
+
+  verificarSesion() {
+    const usuario = this._autentificacionService.getEmail();
+    if (usuario) {
+      this.sesionIniciada = true;
+      console.log('Sesión iniciada');
+      
+    } else {
+      this.sesionIniciada = false;
+
+      console.log('No hay sesión iniciada');
+    }
   }
 
   
@@ -66,7 +84,6 @@ export class BuscadorComponent implements OnInit {
     this._usuarioService.getListasUsuario(idUsuario).subscribe(
       (listas: RecetaModel[]) => {
         this.listaRecetas = listas;
-        console.log(listas);
       },
       (error:any) => {
         console.error('Error al obtener las listas del usuario:', error);
@@ -128,8 +145,6 @@ export class BuscadorComponent implements OnInit {
   
   agregarReceta(recetaId:number): void {
     const listaId = this.addRecetaForm.value.lista_id;
-    console.log(listaId);
-    console.log(recetaId);
 
     this._recetaService.addRecetaToLista(listaId, recetaId).subscribe(
       (response: any) => {

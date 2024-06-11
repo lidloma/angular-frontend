@@ -58,7 +58,6 @@ export class ListasComponent implements OnInit {
     this._usuariosService.getUsuarioId(idUsuario).subscribe(
       (data: UsuarioModel) => {
         this.usuario = data;
-        console.log(data);
       },
       (error) => {
         console.error('Error al obtener al usuario:', error); 
@@ -74,14 +73,12 @@ export class ListasComponent implements OnInit {
 
   obtenerListas() {
     const idUsuario = parseInt(this._route.snapshot.queryParams["id"]);
-    console.log(idUsuario);
     
     this._usuariosService.getListasUsuario(idUsuario).subscribe(
       (listas: RecetaModel[]) => {
         this.listaRecetas = listas;
-        console.log(listas);
       },
-      (error) => {
+      (error:any) => {
         console.error('Error al obtener las listas del usuario:', error); 
       }
     );
@@ -94,7 +91,6 @@ export class ListasComponent implements OnInit {
   subirLista(): void {
     if (this.listaForm.valid) {
       const listaData: ListaModel = { usuario_id: this.obtenerId(), ...this.listaForm.value, imagen: this.imagenBase64 };
-      console.log('Lista a subir:', listaData);
 
       this._recetasService.crearLista(listaData).subscribe(
         (response: any) => {
@@ -172,7 +168,6 @@ export class ListasComponent implements OnInit {
         ...this.editListaForm.value, 
         imagen: this.imagenBase64Edit 
       };
-      console.log('Lista a actualizar:', updatedLista);
 
       this._recetasService.editarLista(this.listaId, updatedLista).subscribe(
         (response: any) => {
@@ -187,4 +182,6 @@ export class ListasComponent implements OnInit {
       );
     }
   }
+
+  
 }

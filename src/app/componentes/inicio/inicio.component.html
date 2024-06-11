@@ -72,7 +72,11 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   
-                  <div class="modal-header">Agrega la receta a una lista</div>
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="guardarModalLabel">Agrega la receta a una lista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                  </div>
                   <div class="modal-body">
                     <form [formGroup]="addRecetaForm" (ngSubmit)="agregarReceta(receta.id)">
                       <div class="form-group">
@@ -102,7 +106,10 @@
         <div id="categoriasSeguir" class="modal" aria-labelledby="staticBackdropLabel">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">Categorías</div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="guardarModalLabel">Selecciona las categorías a las que quieras seguir</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
               <div class="modal-body">
                 <form [formGroup]="categoriasForm" (ngSubmit)="onSubmit()">
                   <div class="categorias-container" formArrayName="categorias">
@@ -214,7 +221,7 @@
     <div id="arriba">
       <div id="crearReceta">
         <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/recetaform']" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear receta + </button>
-        <a href="">Ver tus recetas</a>
+        <a href="#" [routerLink]="['/perfil', usuario.nombreUsuario]" [queryParams]="{id:usuario.id}">Ver tus recetas</a>      
       </div>
       <div id="aside">
         <div class="asideElement">

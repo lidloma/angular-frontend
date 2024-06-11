@@ -91,7 +91,6 @@ export class RecetaComponent implements OnInit {
   ngOnInit(): void {
     this.idReceta = this._route.snapshot.queryParams['id'];
     this.obtenerListas();
-    console.log(this.recetaEnLista);
     this.obtenerReceta();
     this.comprobarRecetaEnLista();
 
@@ -107,7 +106,6 @@ export class RecetaComponent implements OnInit {
     this._recetasService.getReceta(this.idReceta).subscribe(
       (data: RecetaModel) => {
         this.receta = data;
-        console.log(this.receta);
       },
       (error) => {
         console.error('Error al obtener la receta:', error);
@@ -121,7 +119,6 @@ export class RecetaComponent implements OnInit {
     this._usuariosService.getListasUsuario(idUsuario).subscribe(
       (listas: RecetaModel[]) => {
         this.listaRecetas = listas;
-        console.log(listas);
       },
       (error) => {
         console.error('Error al obtener las listas del usuario:', error);
@@ -132,8 +129,6 @@ export class RecetaComponent implements OnInit {
   agregarReceta(): void {
     const listaId = this.addRecetaForm.value.lista_id;
     const recetaId = this.receta.id;
-    console.log(listaId);
-    console.log(recetaId);
 
     this._recetasService.addRecetaToLista(listaId, recetaId).subscribe(
       (response: any) => {
@@ -160,8 +155,6 @@ export class RecetaComponent implements OnInit {
       receta_id: this.idReceta,
       puntuacion: this.comentarioForm.value.puntuacion
     };
-
-    console.log('Comentario a subir:', comentario);
 
     this._comentariosService.crearComentario(comentario).subscribe(
       (response: any) => {
@@ -221,8 +214,6 @@ export class RecetaComponent implements OnInit {
       receta_id: this.idReceta,
       comentario_id: this.idComentario,
     };
-
-    console.log('Respuesta a subir:', comentario);
 
     this._comentariosService.crearComentario(comentario).subscribe(
       (response: any) => {

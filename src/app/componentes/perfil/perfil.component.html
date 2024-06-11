@@ -70,12 +70,12 @@
 
 
   } @empty {
-    No has creado ninguna receta
+    <p class="vacio">No has creado ninguna receta</p>
   }
 </div>
 
 }@else {
-  <p id="siguiendo">Siguiendo {{usuario.usuarios?.length}}</p>
+  <p style="text-align:center;" id="siguiendo">Siguiendo {{usuario.usuarios?.length}}</p>
   <div id="datos2">
       <div>
         <img src="{{usuario.imagen}}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
@@ -85,10 +85,14 @@
           <p>{{usuario.email}}</p>
       </div>
   </div>
-  <div id="seguir">
-    <button class="btn btn-secondary" *ngIf="sigueAlUsuario" (click)="dejarDeSeguir(usuario.id)">Dejar de seguir</button>
-    <button class="btn btn-secondary" *ngIf="!sigueAlUsuario" (click)="seguirUsuario()">Seguir +</button>
-  </div>
+  @if(sesionIniciada){
+    <div id="seguir">
+ 
+      <button class="btn btn-secondary" *ngIf="sigueAlUsuario" (click)="dejarDeSeguir(usuario.id)">Dejar de seguir</button>
+      <button class="btn btn-secondary" *ngIf="!sigueAlUsuario" (click)="seguirUsuario()">Seguir +</button>
+    </div>
+  }
+  
   <div id="menu">
     <ul class="nav nav-underline">
         <li class="nav-item">
@@ -104,21 +108,16 @@
           <img src="{{receta.imagen[0].imagen}}" class="card-img-top" alt="...">
         }
         <div class="card-body">
-          <h5 class="card-title">{{receta.nombre}}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h4 class="card-title"><a href="#" [routerLink]="['/recetas', receta.nombre]" [queryParams]="{id:receta.id}">{{ receta.nombre }}</a></h4>
+          <p class="card-text">{{receta.descripcion}}</p>
           <a  [routerLink]="['/perfil', receta.usuario?.nombreUsuario]" [queryParams]="{id:receta.usuario?.id}">{{ receta.usuario?.nombreUsuario }}</a>
 
         </div>
       </div>
     } @empty {
-      Este usuario no ha creado ninguna receta
+      <p class="vacio">Este usuario no ha creado ninguna receta</p>
     }
   </div>
-  
-    
-  
- 
 
 }
 

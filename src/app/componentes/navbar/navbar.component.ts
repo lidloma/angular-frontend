@@ -53,7 +53,6 @@ export class NavbarComponent {
   logout() {
     this._autentificacion.logout();
     this.sesionIniciada = false;
-    console.log(this.sesionIniciada);
     window.location.reload();
   }
 
@@ -63,7 +62,6 @@ export class NavbarComponent {
       let id = this._autentificacion.getId();
       this._usuariosService.getUsuarioId(id).subscribe((usuario: UsuarioModel) => {
         this.usuario = usuario;
-        console.log(this.usuario);
         
       });
 

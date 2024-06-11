@@ -26,6 +26,7 @@ export class PerfilComponent {
   imgUrl1 = '../../assets/imgs/fondoPredeterminado.jpg';
   imagenBase64: string | ArrayBuffer | null = null;
   sigueAlUsuario = false;
+  sesionIniciada = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -50,13 +51,12 @@ export class PerfilComponent {
     this.comprobarPermiso();
     this.cargarDatosUsuario()
     this.comprobarSiSigue();
-    console.log(this.sigueAlUsuario);
+    this.verificarSesion();
     
     const idUsuario = this._route.snapshot.queryParams["id"];
     this._usuariosService.getUsuarioId(idUsuario).subscribe(
       (data: UsuarioModel) => {
         this.usuario = data;
-        console.log(data);
       },
       (error) => {
         console.error('Error al obtener al usuario:', error); 
@@ -141,11 +141,9 @@ export class PerfilComponent {
   actualizarUsuario(): void {
     if (this.usuarioForm.valid) {
       const usuario: UsuarioModel = { ...this.usuarioForm.value, imagen: this.imagenBase64 };
-      console.log('Datos del usuario:', usuario);
       
       this._usuariosService.actualizarUsuario(this.usuarioId, usuario).subscribe(
         (response: UsuarioModel) => {
-          alert('Usuario actualizado con éxito');
           console.log('Usuario actualizado:', response);
         },
         (error: any) => {
@@ -170,7 +168,7 @@ export class PerfilComponent {
           imagen: data.imagen
         });
       },
-      (error) => {
+      (error:any) => {
         console.error('Error al obtener el usuario:', error);
       }
     );
@@ -187,6 +185,19 @@ export class PerfilComponent {
         this.usuarioForm.patchValue({ imagen: this.imagenBase64 });
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  verificarSesion() {
+    const usuario = this._autentificacionService.getEmail();
+    if (usuario) {
+      this.sesionIniciada = true;
+      console.log('Sesión iniciada');
+      
+    } else {
+      this.sesionIniciada = false;
+
+      console.log('No hay sesión iniciada');
     }
   }
 

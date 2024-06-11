@@ -60,10 +60,6 @@ export class InicioComponent implements OnInit {
       this.categoriasRandom();
       this.getListaCategorias();
       this.obtenerListas();
-
-    } else {
-      this.getRecetasmMejorPuntuadas();
-      this.getRecetasMasRecientes();
     }
   }
 
@@ -72,7 +68,6 @@ export class InicioComponent implements OnInit {
     this._usuarioService.getListasUsuario(idUsuario).subscribe(
       (listas: RecetaModel[]) => {
         this.listaRecetas = listas;
-        console.log(listas);
       },
       (error:any) => {
         console.error('Error al obtener las listas del usuario:', error);
@@ -85,15 +80,14 @@ export class InicioComponent implements OnInit {
     if (usuario) {
       this.sesionIniciada = true;
       this.cargandoUsuario = true;
-
-      console.log('Sesión iniciada con el usuario:', usuario);
+      console.log('Sesión iniciada');
+      
     } else {
       this.sesionIniciada = false;
       this.cargandoUsuario = false;
 
       console.log('No hay sesión iniciada');
     }
-    console.log(this.recetas);
   }
 
   verCategorias() {
@@ -101,7 +95,6 @@ export class InicioComponent implements OnInit {
     this._usuarioService.getRecetasCategoriaUsuario(id).subscribe(
       (data: RecetaModel[]) => {
         this.recetas = data;
-        console.log(this.recetas);
       },
       (error) => {
         console.error('Error al obtener la lista de recetas:', error);
@@ -117,7 +110,6 @@ export class InicioComponent implements OnInit {
       this._usuarioService.getUsuarioId(id).subscribe((usuario: UsuarioModel) => {
         this.usuario = usuario;
         this.cargandoUsuario = false;
-        console.log('Datos del usuario:', usuario);
 
         this.categoriasUsuario = usuario.categorias;
         this.setCategoriasUsuario();
@@ -126,7 +118,6 @@ export class InicioComponent implements OnInit {
         this.getRecetasUsuarioSeguidos();
       });
     } else {
-      console.log('No hay usuario logueado');
       this.cargandoUsuario = false;
     }
   }
@@ -137,7 +128,7 @@ export class InicioComponent implements OnInit {
         this.listaCategorias = data;
         this.setCategoriasCheckboxes();
       },
-      (error) => {
+      (error:any) => {
         console.error('Error al obtener la lista de categorias:', error);
       }
     );
@@ -154,7 +145,6 @@ export class InicioComponent implements OnInit {
         this.recetasUsuarioSeguidos.push(...usuario.recetas);
       }
     }
-    console.log('Recetas de los usuarios seguidos:', this.recetasUsuarioSeguidos);
   }
 
   setCategoriasCheckboxes(): void {
@@ -208,34 +198,10 @@ export class InicioComponent implements OnInit {
     );
   }
 
-  getRecetasmMejorPuntuadas() {
-    this._recetasService.getMejorPuntuadas().subscribe(
-      (data: RecetaModel[]) => {
-        this.recetas = data;
-      },
-      (error) => {
-        console.error('Error al obtener las recetas mejor valoradas:', error);
-        this.recetasMejorPuntuadas = [];
-      }
-    );
-  }
 
-  getRecetasMasRecientes() {
-    this._recetasService.getMasRecientes().subscribe(
-      (data: RecetaModel[]) => {
-        this.recetas = data;
-      },
-      (error) => {
-        console.error('Error al obtener las recetas más recientes:', error);
-        this.recetasMasRecientes = [];
-      }
-    );
-  }
 
   agregarReceta(recetaId:number): void {
     const listaId = this.addRecetaForm.value.lista_id;
-    console.log(listaId);
-    console.log(recetaId);
 
     this._recetasService.addRecetaToLista(listaId, recetaId).subscribe(
       (response: any) => {

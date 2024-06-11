@@ -18,7 +18,7 @@ export class AdminComponent {
   ngOnInit(): void {
     this._denunciaService.listarDenuncias().subscribe(data => {
       this.denuncias = data;
-    }, error => {
+    }, (error:any) => {
       console.error('Error al obtener las denuncias:', error);
     });
   }

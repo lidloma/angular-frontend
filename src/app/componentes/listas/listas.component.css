@@ -138,7 +138,7 @@
 
 
 #anadirLista{
-    width:9.5%;
+    width:130px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -193,7 +193,6 @@
     margin-top:5%;
     border:none;
     background-color: #ECEDEB;
-    height:350px;
 }
 
 h4 a{color:black;}
@@ -206,3 +205,9 @@ h4 a{color:black;}
     color:#F31A1A;
 }
 
+.vacio{
+    margin-top:5%;
+    margin-bottom:6%;
+
+
+}

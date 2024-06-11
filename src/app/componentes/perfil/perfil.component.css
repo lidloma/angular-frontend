@@ -66,8 +66,12 @@ button{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    padding:50px;
+    padding:150px;
+    padding-top:60px;
+    padding-bottom:30px;
+
     margin-bottom:6%;
+ 
 
 }
 
@@ -155,4 +159,11 @@ h4{color:black;}
 .borrar{
     background-color: transparent;
     border:none;
+}
+
+.vacio{
+  margin-top:6%;
+  margin-bottom:4%;
+
+
 }
