@@ -40,7 +40,7 @@
         <h5 class="card-title">{{receta.nombre}}</h5>
         <p  class="card-text" *ngIf="receta.descripcion.split(' ').length >= 15">{{receta.descripcion.split(' ').slice(0,15).join(' ')}}...</p>
         <p  class="card-text" *ngIf="receta.descripcion.split(' ').length < 15">{{receta.descripcion}}</p>
-        <a href="#" class="btn btn-primary">Editar</a>
+        <a href="#" class="btn btn-primary" style="color:white">Editar</a>
         <button id="botonBorrar" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#borrar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>

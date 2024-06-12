@@ -68,7 +68,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button id="eliminarLista" (click)="eliminarLista(lista.id)">Eliminar</button>                
+                  <button id="eliminarLista" style="background-color:#F31A1A; padding:10px; border-radius:10px;"(click)="eliminarLista(lista.id)">Eliminar</button>                
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@
           </div>
           <div class="mb-3">
             <label for="imagen">Imagen:</label>
-            <input id="imagen" type="file" (change)="seleccionarImagen($event)" />
+            <input id="imagen"type="file" (change)="seleccionarImagen($event)" />
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="!listaForm.valid">Crear Lista</button>
         </form>

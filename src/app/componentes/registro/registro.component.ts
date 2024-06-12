@@ -102,11 +102,8 @@ export class RegistroComponent {
       (response: any) => {
         this.registroExitoso = true; 
         console.log('Usuario agregado correctamente:', response);
-        setTimeout(() => {
-          window.location.reload();
-
-        }, 2000);
         this.iniciarSesion();
+        
       
       },
       (error: any) => {
@@ -117,7 +114,7 @@ export class RegistroComponent {
 
   iniciarSesion(){
     const formValues = this.registroForm.value;
-
+    
     this._autentificacionService.login(formValues.email, formValues.contrasenia).subscribe({
       next: (result: Boolean) => {
         if (result) {

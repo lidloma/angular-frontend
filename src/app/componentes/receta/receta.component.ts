@@ -34,6 +34,7 @@ export class RecetaComponent implements OnInit {
   recetaEnLista = false;
   comentarioEnviado = false;
   respuestaEnviada = false;
+  sesionIniciada = false;
 
 
   constructor(
@@ -79,8 +80,18 @@ export class RecetaComponent implements OnInit {
     });
   }
 
-  sesionIniciada(): boolean {
-    return this._autentificacionService.isLogged();
+  getSesionIniciada(): void {
+    
+    const usuario = this._autentificacionService.getEmail();
+    if (usuario) {
+      this.sesionIniciada = true;
+      console.log('Sesión iniciada');
+      
+    } else {
+      this.sesionIniciada = false;
+
+      console.log('No hay sesión iniciada');
+    }
   }
 
   obtenerIdReceta(): number {
@@ -93,12 +104,10 @@ export class RecetaComponent implements OnInit {
     this.obtenerListas();
     this.obtenerReceta();
     this.comprobarRecetaEnLista();
+    this.getSesionIniciada();
 
     
 
-    if (this.sesionIniciada()) {
-      this.sesion = true;
-    }
     
   }
 

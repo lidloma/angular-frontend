@@ -97,6 +97,7 @@ export class PerfilComponent {
 
   dejarDeSeguir(usuarioId:number): void {
     const seguidorId = parseInt(this._autentificacionService.getId(), 10);
+    
   
     if (isNaN(seguidorId) || isNaN(usuarioId)) {
       console.error("Invalid user IDs.");
@@ -106,7 +107,17 @@ export class PerfilComponent {
     this._usuariosService.dejarDeSeguirUsuario(usuarioId, seguidorId).subscribe(
       response => {
         console.log(response.message);
+        const idUsuario = this._route.snapshot.queryParams["id"];
+
         this.sigueAlUsuario = false;
+        this._usuariosService.getUsuarioId(idUsuario).subscribe(
+          (data: UsuarioModel) => {
+            this.usuario = data;
+          },
+          (error) => {
+            console.error('Error al obtener al usuario:', error); 
+          }
+        );
       },
       error => {
         console.error("Error occurred while unfollowing the user:", error.message);
@@ -133,6 +144,20 @@ export class PerfilComponent {
   eliminarReceta(id: number): void {
     this._recetasService.eliminarReceta(id).subscribe((response: any) => {
       console.log('Receta eliminada:', response);
+      const idUsuario = this._route.snapshot.queryParams["id"];
+
+      this._usuariosService.getUsuarioId(idUsuario).subscribe(
+        (data: UsuarioModel) => {
+          this.usuario = data;
+        },
+        (error) => {
+          console.error('Error al obtener al usuario:', error); 
+        }
+      
+      );
+      window.location.reload();
+
+
     }, (error: any) => {
       console.error('Error eliminando receta:', error);
     });

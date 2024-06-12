@@ -155,7 +155,7 @@ button{
   background-color: #ECEDEB;
 }
 
-h4{color:black;}
+h4 a{color:black;}
 .borrar{
     background-color: transparent;
     border:none;
@@ -167,3 +167,4 @@ h4{color:black;}
 
 
 }
+

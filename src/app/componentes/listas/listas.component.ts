@@ -142,6 +142,8 @@ export class ListasComponent implements OnInit {
       (response:any) => {
         console.log(response.message);
         this.obtenerListas();
+        window.location.reload();
+
       },
       (error:any) => {
         console.error('Error al eliminar la lista:', error);
